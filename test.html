@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MinjQuery</title>
+        <script src="./minjQuery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function(){
+
+                // TEST : Create
+                var mjQ = minjQuery('div');
+                
+
+                // TEST : .addClass
+                mjQ.addClass('bg-purple', 'white');
+
+
+                // TEST : .attr
+                mjQ.attr('name', 'hello world');
+                console.log(mjQ.html());
+
+
+                // TEST : .children
+                console.log(mjQ.children());
+                
+
+                // TEST : .click
+                var mjQ_click = minjQuery('clickBtn');
+                mjQ_click.click(function(){
+                    alert('im click func');
+                });
+                
+
+                // TEST : .empty()
+                // TODO : for test .empty() function, uncomment below line
+                // mjQ.empty();
+
+
+                // TEST : .hasClass()
+                mjQ.hasClass('testClass');
+
+
+                // TEST : .removeAttr()
+                // TODO : for test .removeAttr(), uncomment below line
+                // mjQ.removeAttr('name');
+                
+
+                // TEST : .toggleClass()
+                mjQ.toggleClass('testClass');
+                mjQ.toggleClass('test2Class')
+
+
+                // TEST .hover()
+                var mjQ_hover = minjQuery('test');
+                mjQ_hover.hover( function(event) {
+                    event.target.style.color = "yellow";
+
+                    setTimeout(function() {
+                        event.target.style.color = "";
+                    }, 500);
+                });
+            });
+
+        </script>
+        <link href="./test.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="divId">hi1
+            <div name='child1'>hi2
+                <div name=child2>
+                    hi3
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <button id="clickBtn">click</button>
+        <br><br>
+
+        <button onclick="callToggle()" id="fadeToggle">Fade Toggle</button>
+        <p id="textFade">im fade toggle test</p>
+        <script>
+            var mjQ_toggle = minjQuery('textFade');
+                
+            function callToggle(){
+                var toggleBtn = document.getElementById('fadeToggle');
+                mjQ_toggle.fadeToggle(2000);
+            };
+        </script>
+
+        <ul id="test">
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+          </ul>
+    </body>
+</html>
